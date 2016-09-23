@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Occupations Table</title>
+    <title>Occupations</title>
 
   </head>
 
   <body>
-
-
-
-
+    <table>
+      <tr>
+	<td>Job Class</td>
+	<td>Percentage</td>
+      </tr>
+      {% for key in table %}
+      <tr>
+	<td>{{ key }}</td>
+	<td>{{ table[key] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 
 
