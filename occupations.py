@@ -17,7 +17,7 @@ def job_dict():
 
 @app.route("/")
 def intro():
-    return "Donde esta la bibllioteca?"
+    return '''<meta http-equiv="refresh" content="0; URL='occupations'" />'''
 
 @app.route("/occupations")
 def occupations():
