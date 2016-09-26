@@ -2,22 +2,29 @@
 <html>
   <head>
     <title>Occupations</title>
-
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='stylesheets/style.css') }}" >
   </head>
 
   <body>
     <table>
       <tr>
-	<td>Job Class</td>
-	<td>Percentage</td>
+	<th>Job Class</th>
+	<th>Percentage</th>
       </tr>
       {% for key in table %}
       <tr>
-	<td>{{ key }}</td>
+	<td><a href={{ links[key]  }}>{{ key }}</a></td>
 	<td>{{ table[key] }}</td>
       </tr>
       {% endfor %}
+      <tr>
+	<td>Total</td>
+	<td>99.8</td>
+      </tr>
     </table>
+    <hr>
+    <div style="display:flex;justify-content:center;align-items:center;">The Chief Elder has seen you fit to work in {{ rand }}</div>
+
   </body>
 
 
