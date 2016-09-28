@@ -1,8 +1,5 @@
-from flask import Flask, render_template
 import string, random
 
-app = Flask(__name__)
-   
 def job_dict():
     s = open("occupations.csv").read().strip().split("\r\n")
     d = dict()
@@ -32,16 +29,7 @@ def link_dict():
     del d["Total"]
     return d
 
-
-@app.route("/")
-def intro():
-    return '''<meta http-equiv="refresh" content="0; URL='occupations'" />'''
-
-@app.route("/occupations")
-def occupations():
-    # randomizer
-    d = job_dict()
-    l = link_dict()
+def random_job(d):
     pickJob = ''
     random_num = random.random()*100
     threshold = 0.0
@@ -52,10 +40,3 @@ def occupations():
             break
     if pickJob == '':
         pickJob = "Other"
-    
-    # render
-    return render_template('occupations.html',table = d, links = l, rand = pickJob)
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
