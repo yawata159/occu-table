@@ -1,7 +1,7 @@
 import string, random
 
 def job_dict():
-    s = open("occupations.csv").read().strip().split("\r\n")
+    s = open("data/occupations.csv").read().strip().split("\r\n")
     d = dict()
     for line in s:
         key = line.rsplit(",",2)[0]
@@ -17,7 +17,7 @@ def job_dict():
 
 
 def link_dict():
-    s = open("occupations.csv").read().strip().split("\r\n")
+    s = open("data/occupations.csv").read().strip().split("\r\n")
     d = dict()
     for line in s:
         key = line.rsplit(",",2)[0]
@@ -30,13 +30,11 @@ def link_dict():
     return d
 
 def random_job(d):
-    pickJob = ''
     random_num = random.random()*100
     threshold = 0.0
     for key in d:
         threshold += d[key]
         if random_num < threshold:
-            pickJob = key
-            break
+            return key
     if pickJob == '':
-        pickJob = "Other"
+        return "Other"

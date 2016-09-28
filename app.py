@@ -1,17 +1,17 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from utils import occupations
 
 app = Flask(__name__)
    
 @app.route("/")
 def intro():
-    return '''<meta http-equiv="refresh" content="0; URL='occupations'" />'''
+    return redirect("/occupations/")
 
 @app.route("/occupations/")
-def occupations():
+def occ():
     # randomizer
-    d = job_dict()
-    l = link_dict()
+    d = occupations.job_dict()
+    l = occupations.link_dict()
     pickJob = occupations.random_job(d)
     
     # render
